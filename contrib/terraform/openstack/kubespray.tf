@@ -83,6 +83,10 @@ output "k8s_master_fips" {
   value = "${concat(module.ips.k8s_master_fips, module.ips.k8s_master_no_etcd_fips)}"
 }
 
+output "k8s_master_no_etcd_fips" {
+  value = "${module.ips.k8s_master_no_etcd_fips}"
+}
+
 output "k8s_node_fips" {
   value = "${module.ips.k8s_node_fips}"
 }
