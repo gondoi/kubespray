@@ -94,3 +94,6 @@ variable "worker_allowed_ports" {
   type = "list"
 }
 
+variable "kubespray_dir" {}
+
+variable "inventory_dir" {}
