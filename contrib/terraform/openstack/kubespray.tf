@@ -118,7 +118,7 @@ module "dns" {
   k8s_node_fixed_ip                            = "${module.compute.k8s_node_fixed_ip}"
   k8s_node_nf_fixed_ip                         = "${module.compute.k8s_node_nf_fixed_ip}"
   glusterfs_node_nf_fixed_ip                   = "${module.compute.glusterfs_node_nf_fixed_ip}"
-  
+
 }
 
 output "private_subnet_id" {
