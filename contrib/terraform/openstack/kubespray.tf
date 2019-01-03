@@ -75,6 +75,7 @@ module "loadbalancer" {
 
   use_loadbalancer                             = "${var.use_loadbalancer}"
   vip_subnet_id                                = "${module.network.subnet_id}"
+  external_net                                 = "${var.external_net}"
   cluster_name                                 = "${var.cluster_name}"
   loadbalancer_provider                        = "${var.loadbalancer_provider}"
   number_of_k8s_masters                        = "${var.number_of_k8s_masters}"
@@ -88,6 +89,7 @@ module "loadbalancer" {
   k8s_master_nf_ne_fixed_ip                    = "${module.compute.k8s_master_nf_ne_fixed_ip}"
   lb_listener_port                             = "${var.lb_listener_port}"
   lb_backend_listener_port                     = "${var.lb_backend_listener_port}"
+<<<<<<< HEAD
 }
 
 module "dns" {
@@ -119,6 +121,10 @@ module "dns" {
   k8s_node_nf_fixed_ip                         = "${module.compute.k8s_node_nf_fixed_ip}"
   glusterfs_node_nf_fixed_ip                   = "${module.compute.glusterfs_node_nf_fixed_ip}"
 
+=======
+  kubespray_dir                                = "${var.kubespray_dir}"
+  inventory_dir                                = "${var.inventory_dir}"
+>>>>>>> Move lb groupvars creation into lb module
 }
 
 output "private_subnet_id" {
