@@ -66,8 +66,6 @@ module "compute" {
   worker_allowed_ports                         = "${var.worker_allowed_ports}"
   kubespray_dir                                = "${var.kubespray_dir}"
   inventory_dir                                = "${var.inventory_dir}"
-  etcd_anti_affinity                           = "${var.etcd_anti_affinity}"
-  master_anti_affinity                         = "${var.master_anti_affinity}"
 
   network_id = "${module.network.router_id}"
 }
@@ -91,7 +89,8 @@ module "loadbalancer" {
   k8s_master_nf_ne_fixed_ip                    = "${module.compute.k8s_master_nf_ne_fixed_ip}"
   lb_listener_port                             = "${var.lb_listener_port}"
   lb_backend_listener_port                     = "${var.lb_backend_listener_port}"
-<<<<<<< HEAD
+  kubespray_dir                                = "${var.kubespray_dir}"
+  inventory_dir                                = "${var.inventory_dir}"
 }
 
 module "dns" {
@@ -123,10 +122,6 @@ module "dns" {
   k8s_node_nf_fixed_ip                         = "${module.compute.k8s_node_nf_fixed_ip}"
   glusterfs_node_nf_fixed_ip                   = "${module.compute.glusterfs_node_nf_fixed_ip}"
 
-=======
-  kubespray_dir                                = "${var.kubespray_dir}"
-  inventory_dir                                = "${var.inventory_dir}"
->>>>>>> Move lb groupvars creation into lb module
 }
 
 output "private_subnet_id" {
