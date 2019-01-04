@@ -105,3 +105,7 @@ variable "etcd_anti_affinity" {
 variable "master_anti_affinity" {
   default = "true"
 }
+
+variable "openstack_user_data" {
+  default = ""
+}

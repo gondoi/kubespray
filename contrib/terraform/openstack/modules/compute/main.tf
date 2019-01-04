@@ -118,6 +118,7 @@ resource "openstack_compute_instance_v2" "bastion" {
   image_name = "${var.image}"
   flavor_id  = "${var.flavor_bastion}"
   key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -145,6 +146,7 @@ resource "openstack_compute_instance_v2" "k8s_master" {
   image_name        = "${var.image}"
   flavor_id         = "${var.flavor_k8s_master}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -178,6 +180,7 @@ resource "openstack_compute_instance_v2" "k8s_master_no_etcd" {
   image_name        = "${var.image}"
   flavor_id         = "${var.flavor_k8s_master}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -210,6 +213,7 @@ resource "openstack_compute_instance_v2" "etcd" {
   image_name        = "${var.image}"
   flavor_id         = "${var.flavor_etcd}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -237,6 +241,7 @@ resource "openstack_compute_instance_v2" "k8s_master_no_floating_ip" {
   image_name        = "${var.image}"
   flavor_id         = "${var.flavor_k8s_master}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -266,6 +271,7 @@ resource "openstack_compute_instance_v2" "k8s_master_no_floating_ip_no_etcd" {
   image_name        = "${var.image}"
   flavor_id         = "${var.flavor_k8s_master}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -294,6 +300,7 @@ resource "openstack_compute_instance_v2" "k8s_node" {
   image_name        = "${var.image}"
   flavor_id         = "${var.flavor_k8s_node}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -323,6 +330,7 @@ resource "openstack_compute_instance_v2" "k8s_node_no_floating_ip" {
   image_name        = "${var.image}"
   flavor_id         = "${var.flavor_k8s_node}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
@@ -379,6 +387,7 @@ resource "openstack_compute_instance_v2" "glusterfs_node_no_floating_ip" {
   image_name        = "${var.image_gfs}"
   flavor_id         = "${var.flavor_gfs_node}"
   key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data         = "${var.openstack_user_data}"
 
   network {
     name = "${var.network_name}"
