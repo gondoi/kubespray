@@ -23,17 +23,10 @@ kube_apiserver_storage_backend: etcd3
 # By default, force back to etcd2. Set to true to force etcd3 (experimental!)
 force_etcd3: false
 
-kube_etcd_cacert_file: ca.pem
-kube_etcd_cert_file: node-{{ inventory_hostname }}.pem
-kube_etcd_key_file: node-{{ inventory_hostname }}-key.pem
-
 # Associated interfaces must be reachable by the rest of the cluster, and by
 # CLI/web clients.
 kube_controller_manager_bind_address: 0.0.0.0
 kube_scheduler_bind_address: 0.0.0.0
-
-# discovery_timeout modifies the discovery timeout
-discovery_timeout: 5m0s
 
 # audit support
 kubernetes_audit: false
