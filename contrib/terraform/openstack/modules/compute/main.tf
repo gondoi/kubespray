@@ -130,7 +130,8 @@ resource "openstack_compute_instance_v2" "bastion" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "bastion"
+    kubespray_groups = "bastion" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "bastion"
     depends_on       = "${var.network_id}"
   }
 
@@ -164,7 +165,8 @@ resource "openstack_compute_instance_v2" "k8s_master" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "etcd,kube-master,${var.supplementary_master_groups},k8s-cluster,vault"
+    kubespray_groups = "etcd,kube-master,${var.supplementary_master_groups},k8s-cluster,vault" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "etcd,kube-master,${var.supplementary_master_groups},k8s-cluster,vault"
     depends_on       = "${var.network_id}"
   }
 
@@ -197,7 +199,8 @@ resource "openstack_compute_instance_v2" "k8s_master_no_etcd" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "kube-master,${var.supplementary_master_groups},k8s-cluster,vault"
+    kubespray_groups = "kube-master,${var.supplementary_master_groups},k8s-cluster,vault" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "kube-master,${var.supplementary_master_groups},k8s-cluster,vault"
     depends_on       = "${var.network_id}"
   }
 
@@ -229,7 +232,8 @@ resource "openstack_compute_instance_v2" "etcd" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "etcd,vault,no-floating"
+    kubespray_groups = "etcd,vault,no-floating" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "etcd,vault,no-floating"
     depends_on       = "${var.network_id}"
   }
 }
@@ -259,7 +263,8 @@ resource "openstack_compute_instance_v2" "k8s_master_no_floating_ip" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "etcd,kube-master,${var.supplementary_master_groups},k8s-cluster,vault,no-floating"
+    kubespray_groups = "etcd,kube-master,${var.supplementary_master_groups},k8s-cluster,vault,no-floating" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "etcd,kube-master,${var.supplementary_master_groups},k8s-cluster,vault,no-floating"
     depends_on       = "${var.network_id}"
   }
 }
@@ -288,7 +293,8 @@ resource "openstack_compute_instance_v2" "k8s_master_no_floating_ip_no_etcd" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "kube-master,${var.supplementary_master_groups},k8s-cluster,vault,no-floating"
+    kubespray_groups = "kube-master,${var.supplementary_master_groups},k8s-cluster,vault,no-floating" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "kube-master,${var.supplementary_master_groups},k8s-cluster,vault,no-floating"
     depends_on       = "${var.network_id}"
   }
 }
@@ -314,7 +320,8 @@ resource "openstack_compute_instance_v2" "k8s_node" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "kube-node,k8s-cluster,${var.supplementary_node_groups}"
+    kubespray_groups = "kube-node,k8s-cluster,${var.supplementary_node_groups}" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "kube-node,k8s-cluster,${var.supplementary_node_groups}"
     depends_on       = "${var.network_id}"
   }
 
@@ -344,7 +351,8 @@ resource "openstack_compute_instance_v2" "k8s_node_no_floating_ip" {
 
   metadata = {
     ssh_user         = "${var.ssh_user}"
-    kubespray_groups = "kube-node,k8s-cluster,no-floating,${var.supplementary_node_groups}"
+    kubespray_groups = "kube-node,k8s-cluster,no-floating,${var.supplementary_node_groups}" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "kube-node,k8s-cluster,no-floating,${var.supplementary_node_groups}"
     depends_on       = "${var.network_id}"
   }
 }
@@ -400,7 +408,8 @@ resource "openstack_compute_instance_v2" "glusterfs_node_no_floating_ip" {
 
   metadata = {
     ssh_user         = "${var.ssh_user_gfs}"
-    kubespray_groups = "gfs-cluster,network-storage,no-floating"
+    kubespray_groups = "gfs-cluster,network-storage,no-floating" # use of kubespray_groups is deprecated; use 'groups' instead
+    groups = "gfs-cluster,network-storage,no-floating"
     depends_on       = "${var.network_id}"
   }
 }
