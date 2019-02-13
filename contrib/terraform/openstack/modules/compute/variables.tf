@@ -105,3 +105,13 @@ variable "master_anti_affinity" {
 variable "openstack_user_data" {
   default = ""
 }
+
+variable "subnet_cidr" {}
+
+variable "service_cidr" {}
+
+variable "cluster_cidr" {}
+
+variable "real_network_id" {}
+
+variable "vip_subnet_id" {}
