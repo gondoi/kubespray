@@ -127,6 +127,9 @@ resource "openstack_compute_instance_v2" "bastion" {
   flavor_id  = "${var.flavor_bastion}"
   key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
   user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   network {
     name = "${var.network_name}"
@@ -151,10 +154,13 @@ resource "openstack_compute_instance_v2" "k8s_master" {
   name              = "${var.cluster_name}-k8s-master-${count.index+1}"
   count             = "${var.number_of_k8s_masters}"
   availability_zone = "${element(var.az_list, count.index)}"
-  image_name        = "${var.image}"
-  flavor_id         = "${var.flavor_k8s_master}"
-  key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
-  user_data         = "${var.openstack_user_data}"
+  image_name = "${var.image}"
+  flavor_id  = "${var.flavor_k8s_master}"
+  key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   network {
     name = "${var.network_name}"
@@ -208,10 +214,13 @@ resource "openstack_compute_instance_v2" "k8s_master_no_etcd" {
   name              = "${var.cluster_name}-k8s-master-ne-${count.index+1}"
   count             = "${var.number_of_k8s_masters_no_etcd}"
   availability_zone = "${element(var.az_list, count.index)}"
-  image_name        = "${var.image}"
-  flavor_id         = "${var.flavor_k8s_master}"
-  key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
-  user_data         = "${var.openstack_user_data}"
+  image_name = "${var.image}"
+  flavor_id  = "${var.flavor_k8s_master}"
+  key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   depends_on = [
     "openstack_networking_port_v2.k8s_master_no_etcd"
@@ -240,10 +249,13 @@ resource "openstack_compute_instance_v2" "etcd" {
   name              = "${var.cluster_name}-etcd-${count.index+1}"
   count             = "${var.number_of_etcd}"
   availability_zone = "${element(var.az_list, count.index)}"
-  image_name        = "${var.image}"
-  flavor_id         = "${var.flavor_etcd}"
-  key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
-  user_data         = "${var.openstack_user_data}"
+  image_name = "${var.image}"
+  flavor_id  = "${var.flavor_etcd}"
+  key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   network {
     name = "${var.network_name}"
@@ -268,10 +280,13 @@ resource "openstack_compute_instance_v2" "k8s_master_no_floating_ip" {
   name              = "${var.cluster_name}-k8s-master-nf-${count.index+1}"
   count             = "${var.number_of_k8s_masters_no_floating_ip}"
   availability_zone = "${element(var.az_list, count.index)}"
-  image_name        = "${var.image}"
-  flavor_id         = "${var.flavor_k8s_master}"
-  key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
-  user_data         = "${var.openstack_user_data}"
+  image_name = "${var.image}"
+  flavor_id  = "${var.flavor_k8s_master}"
+  key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   network {
     name = "${var.network_name}"
@@ -298,10 +313,13 @@ resource "openstack_compute_instance_v2" "k8s_master_no_floating_ip_no_etcd" {
   name              = "${var.cluster_name}-k8s-master-ne-nf-${count.index+1}"
   count             = "${var.number_of_k8s_masters_no_floating_ip_no_etcd}"
   availability_zone = "${element(var.az_list, count.index)}"
-  image_name        = "${var.image}"
-  flavor_id         = "${var.flavor_k8s_master}"
-  key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
-  user_data         = "${var.openstack_user_data}"
+  image_name = "${var.image}"
+  flavor_id  = "${var.flavor_k8s_master}"
+  key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   network {
     name = "${var.network_name}"
@@ -327,10 +345,13 @@ resource "openstack_compute_instance_v2" "k8s_node" {
   name              = "${var.cluster_name}-k8s-node-${count.index+1}"
   count             = "${var.number_of_k8s_nodes}"
   availability_zone = "${element(var.az_list, count.index)}"
-  image_name        = "${var.image}"
-  flavor_id         = "${var.flavor_k8s_node}"
-  key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
-  user_data         = "${var.openstack_user_data}"
+  image_name = "${var.image}"
+  flavor_id  = "${var.flavor_k8s_node}"
+  key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   network {
     name = "${var.network_name}"
@@ -379,10 +400,13 @@ resource "openstack_compute_instance_v2" "k8s_node_no_floating_ip" {
   name              = "${var.cluster_name}-k8s-node-nf-${count.index+1}"
   count             = "${var.number_of_k8s_nodes_no_floating_ip}"
   availability_zone = "${element(var.az_list, count.index)}"
-  image_name        = "${var.image}"
-  flavor_id         = "${var.flavor_k8s_node}"
-  key_pair          = "${openstack_compute_keypair_v2.k8s.name}"
-  user_data         = "${var.openstack_user_data}"
+  image_name = "${var.image}"
+  flavor_id  = "${var.flavor_k8s_node}"
+  key_pair   = "${openstack_compute_keypair_v2.k8s.name}"
+  user_data  = "${var.openstack_user_data}"
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
 
   depends_on = [
     "openstack_networking_port_v2.k8s_node_no_floating_ip"
