@@ -70,7 +70,7 @@ etcd_download_url: "https://github.com/coreos/etcd/releases/download/{{ etcd_ver
 cni_download_url: "https://github.com/containernetworking/plugins/releases/download/{{ cni_version }}/cni-plugins-{{ image_arch }}-{{ cni_version }}.tgz"
 calicoctl_download_url: "https://github.com/projectcalico/calicoctl/releases/download/{{ calico_ctl_version }}/calicoctl-linux-{{ image_arch }}"
 
-# Checksums
+# Checksums 
 hyperkube_checksums:
   arm64:
     v1.14.1: d5236efc2547fd07c7cc2ed9345dfbcd1204385847ca686cf1c62d15056de399
